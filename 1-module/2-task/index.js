@@ -11,6 +11,9 @@ function print(text) {
  */
 function isValid(name) {
   // ваш код...
+  return (!!name 
+    && name.length >= 4 
+    && name.split(' ').length === 1);
 }
 
 function sayHello() {
