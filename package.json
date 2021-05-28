@@ -10,7 +10,8 @@
     "test": "npm run karma",
     "karma": "karma start karma.conf.js",
     "lint": "eslint \"./*-module/**/*.js\"",
-    "lint:fix": "eslint --fix \"./*-module/**/*.js\""
+    "lint:fix": "eslint --fix \"./*-module/**/*.js\"",
+    "test:debug": "karma start karma.conf.js --browsers=Chrome --singleRun=false"
   },
   "repository": {
     "type": "git",
