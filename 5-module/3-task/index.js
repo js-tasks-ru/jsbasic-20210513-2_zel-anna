@@ -3,6 +3,10 @@ function initCarousel() {
   let arrowRight = document.querySelector('.carousel__arrow_right');
   let arrowLeft = document.querySelector('.carousel__arrow_left');
   let elem = document.querySelector('.carousel__inner');
+  if (!elem) {
+    console.log('Нет элемента');
+    return;
+  }
   
   let widthSlide = elem.closest('.carousel__inner').offsetWidth;
   //console.log('>widthSlide', widthSlide);
