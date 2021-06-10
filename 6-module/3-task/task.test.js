@@ -79,6 +79,7 @@ describe('6-module-3-task', () => {
 
     describe('скрытие стрелок переключения', () => {
       it('в исходном состоянии скрывает стрелку переключения назад', () => {
+        console.log('>>>', carouselArrowLeft);
         expect(carouselArrowLeft.style.display).toBe('none');
       });
 
