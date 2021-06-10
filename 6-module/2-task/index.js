@@ -52,8 +52,8 @@ export default class ProductCard {
   
 }
 
-let productCard = new ProductCard(product);
-console.log(productCard.elem); // корневой HTML элемента карточки товара
+//let productCard = new ProductCard(product);
+//console.log(productCard.elem); // корневой HTML элемента карточки товара
 
 
 

@@ -1,28 +1,14 @@
 import createElement from '../../assets/lib/create-element.js';
 import slides from './slides.js';
 
-/*let slides = [
-  {
-    name: 'Penang shrimp', // Название товара со слайда
-    price: 16, // Цена товара со слайда
-    image: 'penang_shrimp.png', // Название файла картинки со слайда
-    id: 'penang-shrimp' // Уникальный идентификатор товара со слайда
-  },
-  {
-    name: 'Chicken cashew',
-    price: 14,
-    image: 'chicken_cashew.png',
-    id: 'chicken-cashew'
-  },
-];*/
-
 export default class Carousel {
   constructor(slides) {
     this.slides = slides;
     this.elem = document.createElement('div');
     this.elem.classList.add('carousel');
     this.render(slides);
-    setTimeout(() => this.initCarousel());
+    this.initCarousel();
+    
     this.elem.addEventListener('click', (event) => this.onClick(event));
   }
 
@@ -63,11 +49,12 @@ export default class Carousel {
 
   }
   onClick(event) {
-    let button = event.target.closest('.carousel__button');
+    let button = event.target.closest('.carousel__button'); 
     console.log(event);
     if (!button) {
       return;
     }
+    
     let divSlide = event.target.closest('.carousel__slide');
     console.log(divSlide.getAttribute('data-id'));
 
@@ -85,32 +72,33 @@ export default class Carousel {
   initCarousel() {
     let currentSlide = 1;
     let slidesNumber = this.slides.length;
-    let arrowRight = document.querySelector('.carousel__arrow_right');
-    let arrowLeft = document.querySelector('.carousel__arrow_left');
-    let element = document.querySelector('.carousel__inner');
+    let arrowRight = this.elem.querySelector('.carousel__arrow_right');
+    let arrowLeft = this.elem.querySelector('.carousel__arrow_left');
+    let element = this.elem.querySelector('.carousel__inner');
     if (!element) {
       console.log('Нет элемента');
       return;
     }
-    
-    let widthSlide = element.closest('.carousel__inner').offsetWidth;
-    //console.log('>widthSlide', widthSlide);
-    
+      
     updateArrows();
-    //console.log('>widthSlide', widthSlide);
+    
     arrowRight.onclick = function() {
       //console.log('right clicked:', currentSlide);
+      let widthSlide = element.closest('.carousel__inner').offsetWidth;
+      //console.log('>widthSlide', widthSlide);
       element.style.transform = `translateX(-${ widthSlide * currentSlide }px)`;
       currentSlide += 1;
-      //console.log('after shift:', elem.style.transform);
+      //console.log('after shift:', element.style.transform);
       //console.log(currentSlide);
       updateArrows();
     };
     
     arrowLeft.onclick = function() {
       //console.log('left clicked:', currentSlide);
+      let widthSlide = element.closest('.carousel__inner').offsetWidth;
+      //console.log('>widthSlide', widthSlide);
       currentSlide -= 1;
-      //console.log('after shift:', elem.style.transform);
+      //console.log('after shift:', element.style.transform);
       element.style.transform = `translateX(-${ widthSlide * (currentSlide - 1) }px)`;
       //console.log(currentSlide);
       updateArrows();
