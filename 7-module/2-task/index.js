@@ -6,8 +6,8 @@ export default class Modal {
     this.elem.classList.add('modal');
     this.body = document.querySelector('body');
     this.render(); 
+    this.listener = (event) => this.onKeydown(event);
     this.elem.addEventListener('click', (event) => this.onClick(event));
-    document.addEventListener('keydown', (event) => this.onKeydown(event));
 
   }
   
@@ -33,6 +33,7 @@ export default class Modal {
   }
 
   open() {
+    document.addEventListener('keydown', this.listener);
     let body = document.querySelector('body');
     body.append(this.elem);
     body.classList.add('is-modal-open');
@@ -53,6 +54,7 @@ export default class Modal {
   close() {
     this.elem.remove();
     this.body.classList.remove('is-modal-open');
+    document.removeEventListener('keydown', this.listener);
   }
   
   onClick(event) {
