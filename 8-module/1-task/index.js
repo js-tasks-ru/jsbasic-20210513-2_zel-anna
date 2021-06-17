@@ -83,7 +83,7 @@ export default class CartIcon {
       });
     }
 
-    let isMobile = document.documentElement.clientWidth <= 767;
+
 
     
     
