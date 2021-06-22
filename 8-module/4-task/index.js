@@ -120,19 +120,19 @@ export default class Cart {
     this.modal.setBody(modalBody);
     this.modalBody = modalBody;
 
-    let divCardProduct = document.body.querySelector('.cart-product');
-    divCardProduct.addEventListener('click', (event) => this.onClick(event));
+    let divCardProducts = document.body.querySelectorAll('.cart-product');
+    divCardProducts.forEach(div => div.addEventListener('click', (event) => this.onClick(event)));
     this.form = document.querySelector('.cart-form');
     this.form.addEventListener('submit', (event) => this.onSubmit(event));
   }
 
   onProductUpdate(cartItem) {
     this.cartIcon.update(this);
-
+    
     if(document.body.classList.contains('is-modal-open')) {
 
       let productCount = document.body.querySelector(`[data-product-id="${cartItem.product.id}"] .cart-counter__count`);
-
+      
       let productPrice = document.body.querySelector(`[data-product-id="${cartItem.product.id}"] .cart-product__price`);
 
       let infoPrice = document.body.querySelector(`.cart-buttons__info-price`);
@@ -184,6 +184,11 @@ export default class Cart {
   onClick(event) {
     if (event.target.closest('.cart-counter__button_minus')) {
       this.updateProductCount(event.target.closest('.cart-product').dataset.productId, -1);
+      
+      if (event.target.closest('.cart-counter').children[1].innerHTML === '0') {  
+        event.target.closest('.cart-product').remove();
+      }
+      
     } else if (event.target.closest('.cart-counter__button_plus')) {
       this.updateProductCount(event.target.closest('.cart-product').dataset.productId, 1);
     } 

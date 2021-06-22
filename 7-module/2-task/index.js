@@ -46,7 +46,7 @@ export default class Modal {
   }
 
   setBody(modalBody) {
-    console.log(modalBody.innerHTML);
+    //console.log(modalBody.innerHTML);
     
     this.elem.querySelector('.modal__body').innerHTML = modalBody.outerHTML;
   }
@@ -59,7 +59,7 @@ export default class Modal {
   
   onClick(event) {
     let btnClose = event.target.closest('.modal__close');
-    console.log(event);
+    //console.log(event);
     if (!btnClose) {
       return;
     }
