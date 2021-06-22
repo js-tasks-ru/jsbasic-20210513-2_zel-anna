@@ -7,7 +7,7 @@ export default class Cart {
 
   addProduct(product) {
      let cartItem = this.cartItems.find(item => item.product.id === product.id);
-    if (!this.cartItem){
+    if (!cartItem){
       cartItem = { product: product, count: 1 };
       this.cartItems.push(cartItem);
     } else {
