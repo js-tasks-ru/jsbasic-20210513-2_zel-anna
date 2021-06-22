@@ -12,8 +12,7 @@ export default class Cart {
     this.addEventListeners();
   }
 
-  addProduct(product) {
-    
+  addProduct(product) { 
     let cartItem = this.cartItems.find(item => item.product.id === product.id);
     if (!cartItem) {
       cartItem = { product: product, count: 1 };
@@ -175,11 +174,12 @@ export default class Cart {
                                   </div>`;
     }
     this.modal.setBody(this.modalBody);
-  };
+  }
+
+  
 
   addEventListeners() {
     this.cartIcon.elem.onclick = () => this.renderModal();
-    
   }
   onClick(event) {
     if (event.target.closest('.cart-counter__button_minus')) {
