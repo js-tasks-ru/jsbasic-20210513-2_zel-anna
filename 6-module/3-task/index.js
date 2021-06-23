@@ -50,13 +50,13 @@ export default class Carousel {
   }
   onClick(event) {
     let button = event.target.closest('.carousel__button'); 
-    console.log(event);
+    //console.log(event);
     if (!button) {
       return;
     }
     
     let divSlide = event.target.closest('.carousel__slide');
-    console.log(divSlide.getAttribute('data-id'));
+    //console.log(divSlide.getAttribute('data-id'));
 
     let customEvent = new CustomEvent("product-add", { 
       detail: divSlide.getAttribute('data-id'), 
@@ -65,7 +65,7 @@ export default class Carousel {
     this.elem.dispatchEvent(customEvent);
 
     
-    console.log(customEvent);
+    //console.log(customEvent);
   } 
 
   /////// Вставляем функцию
@@ -126,5 +126,5 @@ export default class Carousel {
 }
 
 let carousel = new Carousel(slides);
-console.log(carousel.elem); // Корневой HTML элемента карусели
+//console.log(carousel.elem); // Корневой HTML элемента карусели
 
