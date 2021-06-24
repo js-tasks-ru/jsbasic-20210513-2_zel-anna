@@ -76,7 +76,8 @@ export default class Main {
   }
 
   handleSliderChange(event) {
-    let value = event.target.children[0].children[0].innerHTML;
+    //let value = event.target.children[0].children[0].innerHTML;
+    let value = event.detail;
     //console.log ('catched slider-change');
     this.productsGrid.updateFilter({
       maxSpiciness: value
