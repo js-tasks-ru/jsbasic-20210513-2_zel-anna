@@ -25,9 +25,12 @@ export default class ProductGrid {
     divGridInner.classList.add('products-grid__inner');
 
     products.forEach(product => {
-      let divProduct = document.createElement('div');
+      let productInstance = new ProductCard(product);
+      let divProduct = productInstance.elem;
+      //let divProduct = document.createElement('div');
       divGridInner.append(divProduct);
-      divProduct.classList.add('card');
+      
+      /* divProduct.classList.add('card');
       
       let divTop = document.createElement('div');
       divProduct.append(divTop);
@@ -38,12 +41,12 @@ export default class ProductGrid {
       divProduct.append(divBody);
       divBody.classList.add('card__body');
       divBody.innerHTML = `<div class="card__title">${product.name}</div><button type="button" class="card__button"><img src="/assets/images/icons/plus-icon.svg" alt="icon"></button>`;
-    
+     */
     });
 
   }
   updateFilter(filters) {
-    console.log('Called');
+    //console.log('Called');
      if (!this.filters) {
        this.filters = filters;
      } else {
@@ -58,8 +61,8 @@ export default class ProductGrid {
       return isOkForNoNuts && isOkForVegeterianOnly && isOkForMaxSpiciness && isOkForCategory;
       //return isOkForMaxSpiciness;
     });
-    console.log(newProducts);
+    //console.log(newProducts);
     return this.render(newProducts);
-    console.log(newProducts);
+    //console.log(newProducts);
   }
 }
