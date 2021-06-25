@@ -18,14 +18,17 @@ export default class StepSlider {
   render(){
     let divThumb = document.createElement('div');
     this.elem.append(divThumb);
-    divThumb.classList.add('slider__thumb'); 
-    divThumb.style.cssText = "left: 0%;";
+
+    divThumb.classList.add('slider__thumb');
+    let percentage = this.value * 100 / (this.steps - 1);
+    divThumb.style.cssText = `left: ${percentage}%;`;
     divThumb.innerHTML = '<span class="slider__value"></span>';
 
     let divProgress = document.createElement('div');
     this.elem.append(divProgress);
+    
     divProgress.classList.add('slider__progress'); 
-    divProgress.style.cssText = "width: 0%;";
+    divProgress.style.cssText = `width: ${percentage}%;`;
     
     let divSteps = document.createElement('div');
     this.elem.append(divSteps);
@@ -39,8 +42,8 @@ export default class StepSlider {
         divSteps.innerHTML += `<span></span>\n`;
       }
     } 
-
   }
+
   move(event){
     let left = event.clientX - this.elem.getBoundingClientRect().left;
     this.leftRelative = left / this.elem.offsetWidth;

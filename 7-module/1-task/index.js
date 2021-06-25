@@ -95,7 +95,7 @@ export default class RibbonMenu {
 
 
 let ribbonMenu = new RibbonMenu(categories);
-console.log(ribbonMenu.elem); 
+//console.log(ribbonMenu.elem); 
 
 
 
